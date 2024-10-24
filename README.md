@@ -1,58 +1,70 @@
-const { exec } = require('child_process');
+node hyperexecuteFiles/discovery.js specs/casualty/cologne/cologne.action.test.ts
 
-function listPlaywrightTests(file) {
-  return new Promise((resolve, reject) => {
-    const command =`npx playwright test --list ${file}`;
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.log('-------------->>')
-        reject(error);
-        return;
-      }
-      if (stderr) {
-        
-        console.error('stderr:', stderr);
-        reject(stderr);
-        return;
-      }
 
-      // Split the output into lines and trim the first and last lines
-      let lines = stdout.trim().split('\n');
-      if (lines.length > 2) {
-        lines = lines.slice(1, -2);
-      } else {
-        reject('Insufficient lines to process.');
-        return;
-      }
-
-      // Regex pattern to extract the part after the last '›'
-      const pattern = /[^›]+$/;
-      const testTitles = lines.map(line => {
-        const match = line.match(pattern);
-        return match ? match[0].trim() : null;
-      }).filter(Boolean); // Filter out null values
-
-      if (!testTitles.length) {
-        console.error('No test titles found.');
-        reject('No test titles found.');
-        return;
-      }
-
-      resolve(testTitles.slice(0, -1));
-    });
-  });
+------------------------
+Reporters Configuration: [ [ 'html', { open: 'never', outputFolder: 'reports' } ], [ 'dot' ] ]
+Final Configuration: {
+libertylinkConfig: {
+reporter: [ [Array], [Array] ],
+metadata: {
+testEnvironment: undefined,
+login: undefined,
+password: undefined,
+domain: '-libertylink.aws.lmig.com',
+downloadPath: 'C:\\Users\\n1605156\\Downloads\\659b5f84-4540-490c-85c5-43140df9e182\\test-results\\downloads\\',
+practiTestUrl: 'https://prod.practitest.com/',
+github: 'https://github.com/lmigtech/rulebook-test-automation-playwright/tree/',
+branchName: 'main',
+reportPT: undefined,
+gisMockServiceUrl: 'https://iqqloiqq6d-vpce-05e1edaff1d00acf3.execute-api.eu-west-1.amazonaws.com/development/',
+practitest_project: '22885'
 }
-
-const file = process.argv[2]?process.argv[2]:"";
-
-listPlaywrightTests(file)
-  .then(testTitles => {
-    console.log('------------------------')
-    // You can do something with the test titles here
-    testTitles.forEach(element => {
-      console.log(element);
-    });
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+},
+llIntegrationApacConfig: {
+reporter: [ [Array], [Array] ],
+metadata: {
+testEnvironment: undefined,
+login: undefined,
+password: undefined,
+domain: '-libertylink.aws.lmig.com',
+downloadPath: 'C:\\Users\\n1605156\\Downloads\\659b5f84-4540-490c-85c5-43140df9e182\\test-results\\downloads\\',
+practiTestUrl: 'https://prod.practitest.com/',
+github: 'https://github.com/lmigtech/rulebook-test-automation-playwright/tree/',
+branchName: 'main',
+reportPT: undefined,
+gisMockServiceUrl: 'https://iqqloiqq6d-vpce-05e1edaff1d00acf3.execute-api.eu-west-1.amazonaws.com/development/',
+practitest_project: '24126'
+}
+},
+llIntegrationEuropeConfig: {
+reporter: [ [Array], [Array] ],
+metadata: {
+testEnvironment: undefined,
+login: undefined,
+password: undefined,
+domain: '-libertylink.aws.lmig.com',
+downloadPath: 'C:\\Users\\n1605156\\Downloads\\659b5f84-4540-490c-85c5-43140df9e182\\test-results\\downloads\\',
+practiTestUrl: 'https://prod.practitest.com/',
+github: 'https://github.com/lmigtech/rulebook-test-automation-playwright/tree/',
+branchName: 'main',
+reportPT: undefined,
+gisMockServiceUrl: 'https://iqqloiqq6d-vpce-05e1edaff1d00acf3.execute-api.eu-west-1.amazonaws.com/development/',
+practitest_project: '24129'
+}
+},
+personalConfig: {
+metadata: {
+testEnvironment: undefined,
+login: undefined,
+password: undefined,
+domain: '-libertylink.aws.lmig.com',
+downloadPath: 'C:\\Users\\n1605156\\Downloads\\659b5f84-4540-490c-85c5-43140df9e182\\test-results\\downloads\\',
+practiTestUrl: 'https://prod.practitest.com/',
+github: 'https://github.com/lmigtech/rulebook-test-automation-playwright/tree/',
+branchName: 'main',
+reportPT: undefined,
+gisMockServiceUrl: 'https://iqqloiqq6d-vpce-05e1edaff1d00acf3.execute-api.eu-west-1.amazonaws.com/development/'
+},
+reporter: [ [Array], [Array] ]
+}
+}
